@@ -47,7 +47,7 @@ def api_get_result():
                 status = -1
 
         elif use_score < 70 and use_score > 50:
-            msg = f'The answer seems partialy correct, with {use_score}% similarity.'
+            msg = f'The answer seems partially correct, with {use_score}% similarity.'
             status = 0
         elif use_score >= 70:
             msg = f'It seems the answer is CORRECT, as it has {use_score}% similarity with the target, and it is not in contradiction with the target answer.'
