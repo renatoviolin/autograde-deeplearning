@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" type="text/css" href="static/css/styles.css">
+    <script src="static/js/app.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="modal" id='modal'>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <h2 class="text-center">Autograde Assistant using Deep Learning</h2>
+                <div class="main_window">
+                    <p class="h4 mb-4">Question</p>
+                    <div class="form-group">
+                        <textarea class="form-control rounded-0" id="question" rows="4">The conclusion of a research related to the implementation of an ERP system showed that the success of a project is not always summarized in reaching the initially proposed objectives with respect to the deadlines, scope and cost as defined in the project management methodology. Other aspects contribute significantly to the results of the implementation of an integrated management system. Analyze the following alternatives and indicate the one that contemplates a possible cause the problem contextualizado.
+                                </textarea>
+                    </div>
+
+                    <p class="h4 mb-4">Target answer</p>
+                    <div class="form-group">
+                        <textarea class="form-control rounded-0" id="target"
+                            rows="4">The use of ERP alone does not make a company truly integrated, as there are cultural factors and operational peculiarities that must be considered.</textarea>
+                    </div>
+
+                    <p class="h4 mb-4">Provided answer</p>
+                    <div class="form-group">
+                        <textarea class="form-control rounded-0" id="answer"
+                            rows="4">The use of ERP alone does not make a company truly integrated, as there are cultural factors and operational peculiarities that must be considered.</textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">&nbsp;</div>
+                        <div class="col-md-2"><button class="btn btn-info btn-block" id="btn_corrigir">Process</button></div>
+                        <div class="col-md-5">&nbsp;</div>
+                    </div>
+                    <div class="result-container">
+                        <p class="h4 mb-4">Result</p>
+                        <div class="form-group">
+                            <div id="result-text"></div>
+                        </div>
+                    </div>
+                    <hr>
+                    <h3 id="show-details">Details</h3>
+                    <div class="detail" id="div-details">
+                        <p class="h4 mb-4">Universal Sentence Encoder</p>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="u_question_target">Question x Target</label>
+                                    <input type='text' class="form-control rounded-0" id="u_question_target">
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="u_question_answer">Question x Answer</label>
+                                    <input type='text' class="form-control rounded-0" id="u_question_answer">
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="u_answer_target">Answer x Target</label>
+                                    <input type='text' class="form-control rounded-0" id="u_answer_target" style='background-color: #bddcff'>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="h4 mb-4">RoBERTa STS</p>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="roberta_question_target">Question x Target</label>
+                                    <input type='text' class="form-control rounded-0" id="roberta_question_target">
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="roberta_question_answer">Question x Answer</label>
+                                    <input type='text' class="form-control rounded-0" id="roberta_question_answer">
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="roberta_answer_target">Answer x Target</label>
+                                    <input type='text' class="form-control rounded-0" id="roberta_answer_target" style='background-color: #bddcff'>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <p class="h4 mb-4">RoBERTa Entailment</p>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="r_contradicao">Contradiction</label>
+                                    <input type='text' class="form-control rounded-0" id="r_contradicao">
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="r_neutro">Neutral</label>
+                                    <input type='text' class="form-control rounded-0" id="r_neutro">
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label for="r_implicacao">Entailment</label>
+                                    <input type='text' class="form-control rounded-0" id="r_implicacao">
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                </div>
+
+                                <div class="col-md-4">
+                                    <p class="h4 mb-4">SCORE FINAL</p>
+                                    <input type='text' class="form-control rounded-0" id="score_final" style='background-color: #ffbdbd; font-size: 20px'>
+                                </div>
+
+                                <div class="col-md-4">
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+
+
+                    <!-- </div> -->
+                </div>
+            </div>
+            <!-- <div class="col-sm-1"></div> -->
+        </div>
+</body>
+
+</html>

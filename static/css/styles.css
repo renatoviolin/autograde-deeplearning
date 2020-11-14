@@ -1,0 +1,90 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #e2e2e2;
+	font-family: "Roboto", "Calibri", sans-serif;
+}
+
+.main_window {
+	position: relative;
+	width: 100%;
+	border-radius: 10px;
+	background-color: #fff;
+	margin-top: 20px;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+	background-color: #fff;
+	overflow: hidden;
+	left: 0px;
+	padding: 30px;
+	margin-bottom: 30px;
+}
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1000;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: rgba(153, 153, 153, 0.445) url('http://i.stack.imgur.com/FhHRx.gif') 50% 50% no-repeat;
+}
+
+.loading {
+	display: block;
+}
+
+#msg_input {
+	color: black;
+}
+
+@media screen and (max-width: 768px) {
+
+	.chat_window,
+	.bottom_wrapper clearfix {
+		margin-left: 0%;
+		width: 100%;
+		height: -webkit-fill-available;
+		margin-top: 0px;
+		left: 0px;
+	}
+}
+
+.status_1 {
+	font-weight: bold;
+	font-size: 18px;
+	text-align: center;
+	background-color: rgb(174, 255, 171);
+	padding: 10px;
+	border-radius: 4px;
+}
+
+.status_0 {
+	font-weight: bold;
+	font-size: 18px;
+	text-align: center;
+	background-color: #ddd;
+	padding: 10px;
+	border-radius: 4px;
+}
+
+.status_minus {
+	font-weight: bold;
+	font-size: 18px;
+	text-align: center;
+	background-color: #ff8282;
+	padding: 10px;
+	border-radius: 4px;
+}
+
+#div-details,
+.result-container,
+#show-details {
+	display: none;
+}
+
+#show-details:hover {
+	cursor: pointer;
+}

@@ -1,0 +1,7 @@
+numpy
+torch
+tensorflow
+tensorflow-hub
+flask
+fairseq
+sklearn
